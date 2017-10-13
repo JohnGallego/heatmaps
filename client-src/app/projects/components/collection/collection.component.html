@@ -1,0 +1,17 @@
+<article fxLayout="column" fxLayoutGap="25px">
+    <md-toolbar>
+      <h1>Projects Collection</h1>
+      <div fxFlex></div>
+      <button md-icon-button mdTooltip="Add New Project" mdTooltipPosition="left" routerLink="/edit/new">
+        <md-icon class="subtle-text">library_add</md-icon>
+      </button>
+    </md-toolbar>
+
+    <div class="content" fxLayout="row" fxLayoutAlign="center">
+
+      <app-project-list fxFlex="90"
+        [projects]="projects$ | async"></app-project-list>
+
+    </div>
+
+  </article>

@@ -1,0 +1,35 @@
+<md-toolbar>
+  {{projects.length}} Projects
+</md-toolbar>
+
+<md-card>
+
+  <md-nav-list dense>
+
+    <md-list-item *ngFor="let project of projects">
+      <md-icon md-list-icon>layers</md-icon>
+      <a [routerLink]="['/edit', project.projectId]">
+        <b>({{project.russellId}}) {{project.name}} </b>
+        <em> concepts: {{project.concepts}} | heat maps: {{project.heatMaps}} | created: {{project.dateCreated | date:'shortDate'}} | updated: {{project.dateUpdated | date:'shortDate'}}</em>
+      </a>
+      <span fxFlex></span>
+      <button md-icon-button
+        [routerLink]="['/dataset', project.projectId]"
+        mdTooltip="Dataset"
+        mdTooltipPosition="above">
+        <md-icon>library_books</md-icon>
+      </button>
+      <button md-icon-button
+        [routerLink]="['/heatmaps', project.projectId]"
+        mdTooltip="Heat Maps"
+        mdTooltipPosition="above">
+        <md-icon>whatshot</md-icon>
+      </button>
+    </md-list-item>
+
+  </md-nav-list>
+
+  <md-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </md-paginator>
+
+</md-card>

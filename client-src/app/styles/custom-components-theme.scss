@@ -1,0 +1,7 @@
+// @import './app/shared/components/file-upload/file-upload.component.theme.scss';
+// @import './app/projects/projects-list/projects-list.component.theme.scss';
+
+@mixin custom-components-theme($theme) {
+  // @include projects-list-component-theme($theme);
+  // @include file-upload-component-theme($theme);
+}

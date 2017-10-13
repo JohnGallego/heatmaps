@@ -1,0 +1,21 @@
+<form #filtersForm="ngForm" fxLayout="row" fxLayoutAlign="center" (ngSubmit)="onSubmit()">
+  <md-card class="filters-card mat-elevation-z6" fxFlex="95">
+    <md-card-title>Filters</md-card-title>
+
+    <div *ngFor="let filter of filtersBuffer">
+      <h4>{{filter.name}}</h4>
+
+      <md-input-container class="input" *ngFor="let option of filter.options;let i = index; trackBy:trackByIndex;">
+        <input mdInput placeholder="Option Alias" [(ngModel)]="filter.options[i]" name="filterOptionAlias{{filter.name + '-' + i}}"
+          required>
+      </md-input-container>
+
+    </div>
+
+    <md-card-actions>
+      <button type="submit" md-raised-button color="primary" [disabled]="!filtersForm.form.valid || !hasChanged()">SAVE CHANGES</button>
+      <button type="button" md-raised-button color="accent" (click)="onClearChanges()" [disabled]="!hasChanged()">CLEAR ALL CHANGES</button>
+    </md-card-actions>
+
+  </md-card>
+</form>

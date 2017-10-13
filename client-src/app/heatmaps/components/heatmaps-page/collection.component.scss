@@ -1,0 +1,30 @@
+md-card {
+  position: relative;
+  width: 950px;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 1.65rem;
+  font-weight: 300;
+  text-shadow: 1px 1px 0px white;
+  color: rgba(0,0,0,0.71);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  height: 900px;
+}
+
+.word-container {
+  position: relative;
+  z-index: 100;
+}
+#heatmap {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 900px;
+}
+
+.word {
+  white-space: nowrap;
+}

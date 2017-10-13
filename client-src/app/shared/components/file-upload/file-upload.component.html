@@ -1,0 +1,18 @@
+<div class="file-upload" fxLayout="column">
+  <input #inputFile [accept]="accept" type="file" hidden
+    (change)="nativeInputFileSelect($event)">
+
+  <div class="content" fxLayout="row" fxLayoutAlign="start center">
+
+    <div class="file-details" fxLayout="column" *ngIf="file">
+      <p class="mat-caption">{{file.name}}</p>
+      <p class="mat-caption">Size: {{file.size | fileSize}}</p>
+    </div>
+
+    <button type="button" md-raised-button color="primary" (click)="selectFile()">
+      <ng-content select="[label-icon]"></ng-content> <ng-content select="[label]"></ng-content>
+    </button>
+
+  </div>
+
+</div>

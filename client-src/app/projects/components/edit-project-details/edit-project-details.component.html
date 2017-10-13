@@ -1,0 +1,53 @@
+<md-card>
+
+  <form #editForm="ngForm" fxLayout="column" fxLayoutGap="25px"
+    (ngSubmit)="onSubmit()">
+
+    <div fxLayout="row" fxLayoutGap="20px">
+
+      <md-input-container fxFlex="20">
+        <input type="text" mdInput placeholder="Job Number" name="russellId" required pattern="^\d{2}[-]\d{2}[-]\d{3}$"
+          [(ngModel)]="edit.russellId"
+          #jobNumber="ngModel">
+        <md-hint align="end">xx-xx-xxx</md-hint>
+        <md-error *ngIf="jobNumber.hasError('pattern')">
+          Please enter a valid job number. (xx-xx-xxx)
+        </md-error>
+        <md-error *ngIf="jobNumber.hasError('required')">
+          Please enter a job number. (xx-xx-xxx)
+        </md-error>
+      </md-input-container>
+
+      <md-input-container fxFlex>
+        <input type="text" mdInput placeholder="Project Name" name="name" required minlength="4" maxlength="50"
+          [(ngModel)]="edit.name"
+          #jobName="ngModel">
+        <md-error *ngIf="jobName.hasError('minlength')">
+          Name must be atleast 4 characters in length.
+        </md-error>
+        <md-error *ngIf="jobName.hasError('maxlength')">
+          Name cannot be more than 50 characters in length.
+        </md-error>
+      </md-input-container>
+
+    </div>
+
+    <md-input-container>
+      <textarea mdInput placeholder="Description" name="description" maxlength="250"
+        [(ngModel)]="edit.description"
+        #jobDescription="ngModel"
+        #description></textarea>
+      <md-hint align="end">{{description.value.length}} / 250</md-hint>
+      <md-error *ngIf="jobDescription.hasError('maxlength')">
+        Content cannot exceed 250 characters.
+      </md-error>
+    </md-input-container>
+
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+      <button type="submit" md-raised-button color="primary" [disabled]="!editForm.form.valid || !hasChanged()">SAVE</button>
+      <button type="button" md-raised-button routerLink="/projects">CANCEL</button>
+    </div>
+
+  </form>
+
+</md-card>

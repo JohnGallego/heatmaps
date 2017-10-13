@@ -1,0 +1,15 @@
+@import '../../../styles/md-icon-fontsize.mixin.scss';
+
+.card-icon {
+  opacity: .7;
+  @include md-icon-size(60px);
+}
+
+.card-name {
+  opacity: .7;
+}
+
+.card-number {
+  opacity: .7;
+  font-size: 200%;
+}

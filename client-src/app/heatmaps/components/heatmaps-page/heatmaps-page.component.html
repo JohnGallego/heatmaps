@@ -1,0 +1,20 @@
+<form #filtersForm="ngForm" fxLayout="row" fxLayoutAlign="space-around" (ngSubmit)="onSubmit()">
+
+  <md-form-field class="concept" fxFlex="40">
+    <textarea mdInput placeholder="Concept" [(ngModel)]="concept" name="concept" (change)="conceptChanged($event)" rows="25"></textarea>
+  </md-form-field>
+
+  <md-form-field class="data" fxFlex="40">
+    <textarea mdInput placeholder="Data" [(ngModel)]="data" name="data" (change)="dataChanged($event)" rows="25"></textarea>
+  </md-form-field>
+
+</form>
+
+<md-card>
+  <div #heatmap id="heatmap"></div>
+  <div class="word-container" [innerHtml]="mappedConcept"></div>
+</md-card>
+
+<button md-button type="button" (click)="render()">RENDER</button>
+
+

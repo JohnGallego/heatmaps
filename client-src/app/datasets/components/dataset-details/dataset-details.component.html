@@ -1,0 +1,21 @@
+<div class="edit-dataset" fxLayout="row" fxLayoutAlign="space-around" *ngIf="dataset">
+
+  <md-card fxFlex="25" fxLayout="column" fxLayoutAlign="start center">
+    <md-icon class="card-icon">people</md-icon>
+    <h3 class="card-name">RESPONDENTS</h3>
+    <h1 class="card-number">{{dataset.respondents.length}}</h1>
+  </md-card>
+
+  <md-card fxFlex="25" fxLayout="column" fxLayoutAlign="start center">
+    <md-icon class="card-icon">photo</md-icon>
+    <h3 class="card-name">CONCEPTS</h3>
+    <h1 class="card-number">{{dataset.concepts.length}}</h1>
+  </md-card>
+
+  <md-card fxFlex="25" fxLayout="column" fxLayoutAlign="start center">
+    <md-icon class="card-icon">recent_actors</md-icon>
+    <h3 class="card-name">FILTERS</h3>
+    <h1 class="card-number">{{dataset.dataFilters.length}}</h1>
+  </md-card>
+
+</div>

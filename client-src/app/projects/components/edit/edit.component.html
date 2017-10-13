@@ -1,0 +1,24 @@
+<article fxLayout="column" fxLayoutGap="25px">
+  <md-toolbar>
+    <h1 *ngIf="projectEditing$ | async as projectEditing; else createTitle">Editing: {{ projectEditing.name }}</h1>
+    <ng-template #createTitle><h1>Creating A New Project</h1></ng-template>
+    <span fxFlex></span>
+    <button type="button" md-raised-button routerLink="/projects">GO BACK</button>
+  </md-toolbar>
+
+  <div class="content" fxLayout="row" fxLayoutAlign="center">
+
+    <app-edit-project-details fxFlex="90"
+      *ngIf="projectEditing$ | async as projectEditing; else createProject"
+      [project]="projectEditing"
+      (update)="onEditUpdate($event)"></app-edit-project-details>
+
+    <ng-template #createProject>
+      <app-edit-project-details fxFlex="90"
+        [project]="projectCreating"
+        (update)="onCreateUpdate($event)"></app-edit-project-details>
+    </ng-template>
+
+  </div>
+
+</article>

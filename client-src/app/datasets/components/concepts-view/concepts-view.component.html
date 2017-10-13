@@ -1,0 +1,34 @@
+<form #conceptsForm="ngForm" fxLayout="column" fxLayoutGap="20px" (ngSubmit)="onSubmit()">
+
+  <div class="actions" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+    <button type="submit" md-raised-button color="primary" [disabled]="!conceptsForm.form.valid || !hasChanged()">SAVE CHANGES</button>
+    <button type="button" md-raised-button color="accent" (click)="onClearChanges()" [disabled]="!hasChanged()">CLEAR ALL CHANGES</button>
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutWrap>
+    <div class="concept" fxFlex="33" fxFlex.sm="50" *ngFor="let concept of conceptsBuffer; let i = index; trackBy:trackByIndex;">
+
+      <md-card>
+        <md-card-header>
+          <div md-card-avatar>
+            <md-icon class="card-icon">photo</md-icon>
+          </div>
+          <md-card-title>
+            <md-input-container>
+              <input mdInput placeholder="Concept Name" [(ngModel)]="concept.name" name="concept{{i}}" required>
+            </md-input-container>
+          </md-card-title>
+        </md-card-header>
+        <img md-card-image [src]="concept.image" *ngIf="concept.image">
+        <md-card-actions fxLayout="row" fxLayoutAlign="end">
+          <app-file-upload accept=".jpg,.png" (fileSelected)="onImageSelected($event, concept)">
+            <md-icon label-icon>cloud_upload</md-icon>
+            <span label>SET IMAGE</span>
+          </app-file-upload>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+  </div>
+
+</form>

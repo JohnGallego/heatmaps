@@ -1,0 +1,41 @@
+<div fxLayout="column" fxLayoutGap="25px">
+
+  <md-toolbar>
+    Dataset: {{ (projectEditing$ | async)?.name }}
+    <span fxFlex></span>
+    <button type="button" md-raised-button routerLink="/projects">GO BACK</button>
+  </md-toolbar>
+
+  <div class="details" fxLayout="row" fxLayoutAlign="center">
+
+    <app-dataset-details fxFlex="70"
+      [dataset]="dataset$ | async"></app-dataset-details>
+
+    <app-file-upload fxFlex="20"
+      accept=".csv"
+      (fileSelected)="onDatasetFileSelected($event)">
+      <md-icon label-icon>cloud_upload</md-icon>
+      <span label>OPEN DATASET .CSV</span>
+    </app-file-upload>
+
+  </div>
+  <div class="content" fxLayout="row" fxLayoutAlign="center">
+    <md-tab-group fxFlex="90" *ngIf="dataset$ | async">
+      <md-tab label="Concepts">
+
+        <app-concepts-view
+          [concepts]="(dataset$ | async)?.concepts"
+          (conceptChange)="onConceptChange($event)"></app-concepts-view>
+
+      </md-tab>
+      <md-tab label="Filters">
+
+        <app-filters-view
+          [filters]="(dataset$ | async)?.dataFilters"
+          (filtersChange)="onFiltersChange($event)"></app-filters-view>
+
+      </md-tab>
+    </md-tab-group>
+  </div>
+
+</div>

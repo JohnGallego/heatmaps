@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+@include mat-core();
+@import './app-palette.scss';
+
+$heatmaps-palette-primary: mat-palette($md-heatmapsprimary);
+$heatmaps-palette-accent: mat-palette($md-heatmapsaccent);
+$heatmaps-palette-warn: mat-palette($md-heatmapswarn);
+
+$heatmaps-light-theme: mat-light-theme($heatmaps-palette-primary, $heatmaps-palette-accent, $heatmaps-palette-warn);
+
+@include angular-material-theme($heatmaps-light-theme);
